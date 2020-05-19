@@ -30,3 +30,54 @@ Es valora que tingueu en compte errors i els gestioneu. Possibles errors:
 - si no es té permisos per llegir o escriure  en el directori que toqui.
 
 I aviseu degudament a l'usuari.
+
+Aquí teniu exemples de com es fan diverses operacions amb els arxius:
+
+## Llistar arxius en un directori 
+```python3=
+#!/usr/bin/python
+
+import os, sys
+
+# Open a file
+path = "/var/www/html/"
+dirs = os.listdir( path )
+
+# This would print all the files and directories
+for file in dirs:
+   print file
+``` 
+
+## Comprovar arxiu existeix
+
+```python3=
+import os
+if os.path.exists("demofile.txt"):
+  os.remove("demofile.txt")
+else:
+  print("The file does not exist")
+```
+## Borrar arxius
+```python3=
+import os
+os.remove("demofile.txt")
+```
+
+## Copiar arxius
+```python3=
+from shutil import copyfile
+copyfile(src, dst)
+```
+
+## Moure arxius
+
+```python3=
+import os
+import shutil
+
+#Qualsevol de les tres maneres serveix
+os.rename("path/to/current/file.foo", "path/to/new/destination/for/file.foo")
+shutil.move("path/to/current/file.foo", "path/to/new/destination/for/file.foo")
+os.replace("path/to/current/file.foo", "path/to/new/destination/for/file.foo")
+```
+
