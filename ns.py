@@ -1,3 +1,4 @@
+from shutil import copyfile
 
 import os, sys
 
@@ -10,8 +11,16 @@ for file in dirs:
 nom=input('arxiu a obrir: ')
 fitxer = open(path+'/'+nom,'r')
 fitxerr=fitxer.read()
-print (fitxerr.read())
+print (fitxerr)
 resposta=input('vols executar el contingut del arxiu?')
 if resposta == 'si':
-  pro = fitxer.read().split(' ')
-  print (pro[0])
+  pro = fitxerr.split(' ')
+  if pro[0]=='moure':
+    if os.path.exists(path+'/'+pro[2]):
+      os.replace(path+'/'+pro[1] , path+'/'+pro[2])
+    else:
+      print('no existeix')
+  elif pro[0]=='borrar':
+    os.remove(path+'/'+pro[1])
+  elif pro[0]=='copiar':
+    copyfile(src, dst)
